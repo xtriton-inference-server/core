@@ -1661,7 +1661,8 @@ ValidateInstanceGroup(
             Status::Code::SUCCESS,
             "instance group " + group.name() + " of model " + config.name() +
                 " has kind KIND_XPU");
-      } else {
+      } 
+    } else {
       return Status(
           Status::Code::INTERNAL, "instance group " + group.name() +
                                       " of model " + config.name() +
