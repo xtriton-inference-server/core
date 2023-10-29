@@ -563,6 +563,14 @@ TritonModel::PrepareInstances(
               TRITONSERVER_INSTANCEGROUPKIND_GPU, device_id,
               &group.rate_limiter());
         }
+      } else if (group.kind() == inference::ModelInstanceGroup::KIND_XPU) {
+        for (const int32_t device_id : group.xpus()) {
+          instance_settings.emplace_back(
+              group.host_policy().empty() ? ("xpu_" + std::to_string(device_id))
+                                          : group.host_policy(),
+              TRITONSERVER_INSTANCEGROUPKIND_XPU, device_id,
+              &group.rate_limiter());
+        }
       } else if (group.kind() == inference::ModelInstanceGroup::KIND_MODEL) {
         instance_settings.emplace_back(
             group.host_policy().empty() ? "model" : group.host_policy(),
