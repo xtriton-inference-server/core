@@ -1830,6 +1830,9 @@ TRITONBACKEND_BackendAttributeAddPreferredInstanceGroup(
     case TRITONSERVER_INSTANCEGROUPKIND_GPU:
       pg.set_kind(inference::ModelInstanceGroup::KIND_GPU);
       break;
+    case TRITONSERVER_INSTANCEGROUPKIND_XPU:
+      pg.set_kind(inference::ModelInstanceGroup::KIND_XPU);
+      break;
     case TRITONSERVER_INSTANCEGROUPKIND_MODEL:
       pg.set_kind(inference::ModelInstanceGroup::KIND_MODEL);
       break;
