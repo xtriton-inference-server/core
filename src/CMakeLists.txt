@@ -268,7 +268,7 @@ set_target_properties(
   triton-core
   PROPERTIES
     POSITION_INDEPENDENT_CODE ON
-    OUTPUT_NAME tritonserver
+    OUTPUT_NAME xtritonserver
     SKIP_BUILD_RPATH TRUE
     BUILD_WITH_INSTALL_RPATH TRUE
     INSTALL_RPATH_USE_LINK_PATH FALSE
