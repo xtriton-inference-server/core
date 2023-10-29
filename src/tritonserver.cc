@@ -667,6 +667,8 @@ TRITONSERVER_InstanceGroupKindString(TRITONSERVER_InstanceGroupKind kind)
       return "CPU";
     case TRITONSERVER_INSTANCEGROUPKIND_GPU:
       return "GPU";
+    case TRITONSERVER_INSTANCEGROUPKIND_XPU:
+      return "XPU";
     case TRITONSERVER_INSTANCEGROUPKIND_MODEL:
       return "MODEL";
     default:

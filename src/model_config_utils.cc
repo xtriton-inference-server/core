@@ -873,6 +873,11 @@ NormalizeInstanceGroup(
         group.add_gpus(d);
       }
     }
+
+    // XPUs
+    if (group.kind() == inference::ModelInstanceGroup::KIND_XPU) {
+      group.set_kind(inference::ModelInstanceGroup::KIND_XPU);
+    }
   }
 
   return Status::Success;
@@ -1650,7 +1655,13 @@ ValidateInstanceGroup(
             "instance group " + group.name() + " of model " + config.name() +
                 " has kind KIND_CPU but specifies one or more GPUs");
       }
-    } else {
+    } else if (group.kind() == inference::ModelInstanceGroup::KIND_XPU) {
+      if (group.xpus().size() > 0) {
+        return Status(
+            Status::Code::SUCCESS,
+            "instance group " + group.name() + " of model " + config.name() +
+                " has kind KIND_XPU");
+      } else {
       return Status(
           Status::Code::INTERNAL, "instance group " + group.name() +
                                       " of model " + config.name() +
