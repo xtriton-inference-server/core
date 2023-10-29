@@ -143,7 +143,7 @@ set_target_properties(
   triton-core-serverstub
   PROPERTIES
     POSITION_INDEPENDENT_CODE ON
-    OUTPUT_NAME tritonserver
+    OUTPUT_NAME xtritonserver
 )
 
 #
